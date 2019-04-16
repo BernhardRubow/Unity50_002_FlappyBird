@@ -33,9 +33,9 @@ public class TestScript_Prototyp_Oncoming_Pillars : AbstractEventHandler
         UnsubscribeFromEvents();
     }
 
-    private void OnDebugMsg(object arg1, object arg2)
+    private void OnDebugMsg(object s, object e)
     {
-        Debug.Log("OnDebugMessage received");
+        Debug.LogFormat("OnDebugMessage received {0}", e);
     }
 
 
