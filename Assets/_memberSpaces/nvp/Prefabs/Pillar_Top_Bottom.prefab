@@ -258,3 +258,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _horizontalSpeed: 5
+  _leftMovementBorder: -12
