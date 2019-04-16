@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using nvp.Scripts.Interfaces;
 using nvp.Scripts.Tools.Pooling;
 using UnityEngine;
 
@@ -7,21 +8,29 @@ namespace nvp.Scripts.Game
 {
     public class NvpPillarGenerator : MonoBehaviour
     {
+
+        // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         [SerializeField] private GameObject _pillarSpawnPoint;
-
         [SerializeField] private GameObject[] _pillarTypes;
-
         [SerializeField] private float _timeBetweenSpawns;
-
         private NvpGameObjectPool _pillarPool;
+        private IVerticalPositionSetter _verticalPositionSetter;
+        
 
 
+
+        // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         void Start()
         {
+            _verticalPositionSetter = new NvpVerticalPositionSetter();
             _pillarPool = new NvpGameObjectPool();
             StartCoroutine(SpawnPillar());
         }
 
+
+
+
+        // +++ co-routines ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         IEnumerator SpawnPillar()
         {
             while (true)
@@ -46,8 +55,20 @@ namespace nvp.Scripts.Game
                     pillar.SetActive(true);
                     pillar.transform.position = _pillarSpawnPoint.transform.position;
                 }
+
+                ModifyVerticalPosition(pillar);
             }
         }
-    }
 
+
+
+
+        // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        private void ModifyVerticalPosition(GameObject pillar)
+        {
+            var tempPos = pillar.transform.position;
+            tempPos.y = _verticalPositionSetter.GetVerticalPosition();
+            pillar.transform.position = tempPos;
+        }
+    }
 }
