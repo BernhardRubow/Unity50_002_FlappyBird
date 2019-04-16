@@ -3,30 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NvpPillarMover : MonoBehaviour
+namespace nvp.Scripts.Game
 {
-    // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    [SerializeField] private float _horizontalSpeed;
-    private Action<GameObject> returnToPoolCallback;
-
-    void Start()
+    public class NvpPillarMover : MonoBehaviour
     {
-        
-    }
+        // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        [SerializeField] private float _horizontalSpeed;
+        [SerializeField] private float _leftMovementBorder;
+        private Action<GameObject> returnToPoolCallback;
 
-    
-    void Update()
-    {
-        this.transform.Translate(Vector3.left * _horizontalSpeed * Time.deltaTime, Space.World);
-
-        if (this.transform.position.x < -12)
+        void Start()
         {
-            returnToPoolCallback(this.gameObject);
-        }
-    }
 
-    public void ReturnToPoolCallback(Action<GameObject> returnToPool)
-    {
-        returnToPoolCallback = returnToPool;
+        }
+
+
+        void Update()
+        {
+            this.transform.Translate(Vector3.left * _horizontalSpeed * Time.deltaTime, Space.World);
+
+            if (this.transform.position.x < _leftMovementBorder)
+            {
+                returnToPoolCallback(this.gameObject);
+            }
+        }
+
+        public void ReturnToPoolCallback(Action<GameObject> returnToPool)
+        {
+            returnToPoolCallback = returnToPool;
+        }
     }
 }

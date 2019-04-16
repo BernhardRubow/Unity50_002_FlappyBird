@@ -3,47 +3,51 @@ using System.Collections.Generic;
 using nvp.Scripts.Tools.Pooling;
 using UnityEngine;
 
-public class NvpPillarGenerator : MonoBehaviour
+namespace nvp.Scripts.Game
 {
-    [SerializeField] private GameObject _pillarSpawnPoint;
-
-    [SerializeField] private GameObject[] _pillarTypes;
-
-    [SerializeField] private float _timeBetweenSpawns;
-
-    private NvpGameObjectPool _pillarPool;
-
-
-    void Start()
+    public class NvpPillarGenerator : MonoBehaviour
     {
-        _pillarPool = new NvpGameObjectPool();
-        StartCoroutine(SpawnPillar());
-    }
+        [SerializeField] private GameObject _pillarSpawnPoint;
 
-    IEnumerator SpawnPillar()
-    {
-        while (true)
+        [SerializeField] private GameObject[] _pillarTypes;
+
+        [SerializeField] private float _timeBetweenSpawns;
+
+        private NvpGameObjectPool _pillarPool;
+
+
+        void Start()
         {
-            yield return new WaitForSeconds(_timeBetweenSpawns);
+            _pillarPool = new NvpGameObjectPool();
+            StartCoroutine(SpawnPillar());
+        }
 
-            GameObject pillar = _pillarPool.GetFromPool();
-            if (pillar == null)
+        IEnumerator SpawnPillar()
+        {
+            while (true)
             {
-                // pool has not returned an item
-                pillar = Instantiate(
-                    _pillarTypes[Random.Range(0, _pillarTypes.Length)],
-                    _pillarSpawnPoint.transform.position,
-                    Quaternion.identity);
+                yield return new WaitForSeconds(_timeBetweenSpawns);
 
-                // set the callback to return the item to the pool
-                pillar.GetComponent<NvpPillarMover>().ReturnToPoolCallback(_pillarPool.ReturnToPool);
-            }
-            else
-            {
-                // pool has returned an item
-                pillar.SetActive(true);
-                pillar.transform.position = _pillarSpawnPoint.transform.position;
+                GameObject pillar = _pillarPool.GetFromPool();
+                if (pillar == null)
+                {
+                    // pool has not returned an item
+                    pillar = Instantiate(
+                        _pillarTypes[Random.Range(0, _pillarTypes.Length)],
+                        _pillarSpawnPoint.transform.position,
+                        Quaternion.identity);
+
+                    // set the callback to return the item to the pool
+                    pillar.GetComponent<NvpPillarMover>().ReturnToPoolCallback(_pillarPool.ReturnToPool);
+                }
+                else
+                {
+                    // pool has returned an item
+                    pillar.SetActive(true);
+                    pillar.transform.position = _pillarSpawnPoint.transform.position;
+                }
             }
         }
     }
+
 }
