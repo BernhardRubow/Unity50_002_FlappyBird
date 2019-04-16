@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace nvp.events
+namespace nvp.Scripts.Tools.Events
 {
     public enum NvpGameEvents
     {

@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using nvp.Scripts.Interfaces;
 
-namespace nvp.events
+namespace nvp.Scripts.Tools.Events
 {
     public class NvpEventController : IEventController
     {

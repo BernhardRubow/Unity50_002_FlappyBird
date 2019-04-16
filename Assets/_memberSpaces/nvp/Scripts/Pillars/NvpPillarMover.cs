@@ -7,7 +7,7 @@ public class NvpPillarMover : MonoBehaviour
 {
     // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     [SerializeField] private float _horizontalSpeed;
-    private Action<Transform> returnToPoolCallback;
+    private Action<GameObject> returnToPoolCallback;
 
     void Start()
     {
@@ -21,12 +21,11 @@ public class NvpPillarMover : MonoBehaviour
 
         if (this.transform.position.x < -12)
         {
-            this.gameObject.SetActive(false);
-            returnToPoolCallback(this.transform);
+            returnToPoolCallback(this.gameObject);
         }
     }
 
-    public void SetReturnCallback(Action<Transform> returnToPool)
+    public void ReturnToPoolCallback(Action<GameObject> returnToPool)
     {
         returnToPoolCallback = returnToPool;
     }

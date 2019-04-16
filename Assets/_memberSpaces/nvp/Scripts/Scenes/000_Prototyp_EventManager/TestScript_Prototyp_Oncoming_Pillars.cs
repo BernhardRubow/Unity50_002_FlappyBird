@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Assets._memberSpaces.nvp.Scripts._AbstractBaseClasses;
-using nvp.events;
+﻿using Assets._memberSpaces.nvp.Scripts._AbstractBaseClasses;
+using nvp.Scripts.Tools.Events;
 using UnityEngine;
 
 public class TestScript_Prototyp_Oncoming_Pillars : AbstractEventHandler

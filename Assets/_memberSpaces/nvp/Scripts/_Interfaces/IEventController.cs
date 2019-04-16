@@ -1,6 +1,7 @@
 ﻿using System;
+using nvp.Scripts.Tools.Events;
 
-namespace nvp.events
+namespace nvp.Scripts.Interfaces
 {
     public interface IEventController
     {

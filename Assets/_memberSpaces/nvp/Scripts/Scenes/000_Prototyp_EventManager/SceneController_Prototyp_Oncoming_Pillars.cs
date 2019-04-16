@@ -1,9 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Assets._memberSpaces.nvp.Scripts._AbstractBaseClasses;
-using nvp.events;
-using UnityEngine;
-using Zenject;
+﻿using Assets._memberSpaces.nvp.Scripts._AbstractBaseClasses;
+using nvp.Scripts.Tools.Events;
 
 public class SceneController_Prototyp_Oncoming_Pillars : AbstractEventHandler
 {

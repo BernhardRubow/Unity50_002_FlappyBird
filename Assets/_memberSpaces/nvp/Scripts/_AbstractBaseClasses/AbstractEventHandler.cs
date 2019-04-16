@@ -1,4 +1,4 @@
-﻿using nvp.events;
+﻿using nvp.Scripts.Interfaces;
 using UnityEngine;
 using Zenject;
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using nvp.Scripts.Tools.Pooling;
 using UnityEngine;
 
 public class NvpPillarGenerator : MonoBehaviour
@@ -10,18 +11,13 @@ public class NvpPillarGenerator : MonoBehaviour
 
     [SerializeField] private float _timeBetweenSpawns;
 
-    Queue<Transform> _pool = new Queue<Transform>();
+    private NvpGameObjectPool _pillarPool;
 
 
     void Start()
     {
-        Queue<Transform> _pool = new Queue<Transform>();
+        _pillarPool = new NvpGameObjectPool();
         StartCoroutine(SpawnPillar());
-    }
-
-    void Update()
-    {
-
     }
 
     IEnumerator SpawnPillar()
@@ -30,28 +26,24 @@ public class NvpPillarGenerator : MonoBehaviour
         {
             yield return new WaitForSeconds(_timeBetweenSpawns);
 
-            GameObject pillar = null;
-            if (_pool.Count < 1)
+            GameObject pillar = _pillarPool.GetFromPool();
+            if (pillar == null)
             {
-                pillar = GameObject.Instantiate(
+                // pool has not returned an item
+                pillar = Instantiate(
                     _pillarTypes[Random.Range(0, _pillarTypes.Length)],
                     _pillarSpawnPoint.transform.position,
                     Quaternion.identity);
+
+                // set the callback to return the item to the pool
+                pillar.GetComponent<NvpPillarMover>().ReturnToPoolCallback(_pillarPool.ReturnToPool);
             }
             else
             {
-                pillar = _pool.Dequeue().gameObject;
+                // pool has returned an item
                 pillar.SetActive(true);
                 pillar.transform.position = _pillarSpawnPoint.transform.position;
             }
-
-            pillar.GetComponent<NvpPillarMover>().SetReturnCallback(ReturnToPool);
-
         }
-    }
-
-    private void ReturnToPool(Transform t)
-    {
-        _pool.Enqueue(t);
     }
 }
