@@ -4,23 +4,40 @@ using UnityEngine;
 
 public class BirdMove : MonoBehaviour
 {
-    public float velocity = 1;
-    private Rigidbody2D rb;
-    public Transform Bird_Visual;
-    // Start is called before the first frame update
+    // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // +++ inspector fields +++
+    [SerializeField] private float _velocity;
+    [SerializeField] private Transform _bird_Visual;
+    [SerializeField] private float _turnFactor;
+
+    // +++ private fields +++
+    private Rigidbody2D _rb;
+    public Vector3 _birdRotation = Vector3.zero;
+    
+
+
+
+
+    // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
-        if (Input.GetKey("space"))
+        
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * velocity;
+            _rb.velocity = Vector2.up * _velocity;
         }
-        Debug.Log(rb.velocity.y);
+
+        _birdRotation.z = _rb.velocity.y * _turnFactor;
+        _bird_Visual.eulerAngles = _birdRotation;
+
+        Debug.Log(_rb.velocity.y * _turnFactor);
     }
     
 }
