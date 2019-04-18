@@ -6,6 +6,7 @@ public class BirdMove : MonoBehaviour
 {
     public float velocity = 1;
     private Rigidbody2D rb;
+    public Transform Bird_Visual;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class BirdMove : MonoBehaviour
         {
             rb.velocity = Vector2.up * velocity;
         }
+        Debug.Log(rb.velocity.y);
     }
     
 }
