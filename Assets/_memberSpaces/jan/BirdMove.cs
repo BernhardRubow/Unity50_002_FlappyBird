@@ -20,4 +20,5 @@ public class BirdMove : MonoBehaviour
             rb.velocity = Vector2.up * velocity;
         }
     }
+    
 }
