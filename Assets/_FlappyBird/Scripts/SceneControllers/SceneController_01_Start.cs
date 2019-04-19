@@ -1,9 +1,10 @@
-﻿using nvp_AbstractBaseClasses;
-using nvp.Tools.Events;
+﻿using System;
+using System.Threading.Tasks;
+using FlappyBird.Events;
 
-namespace nvp.Prototypes.Prototy_000
+namespace FlappyBird.Scenes
 {
-    public class SceneController_Prototyp_Oncoming_Pillars : NvpAbstractEventHandler
+    public class SceneController_01_Start : NvpAbstractEventHandler
     {
         // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -11,31 +12,19 @@ namespace nvp.Prototypes.Prototy_000
 
 
         // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        void Awake()
+        async void Start()
         {
-            SubscribeToEvents();
-        }
+            // Wait for all general scripts to be initialized
+            await Task.Delay(TimeSpan.FromSeconds(1));
 
-        void Start()
-        {
-            EventController.InvokeEvent(NvpGameEvents.OnDebugMsg, this, "Hello, World!");
-        }
-
-
-        void Update()
-        {
-
+            // Inform everybody, that the game has finished initialization
+            EventController.InvokeEvent(NvpGameEvents.OnGameInitialized, this, null);
         }
 
 
 
 
         // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        protected override void OnDisable()
-        {
-            base.OnDisable();
-            UnsubscribeFromEvents();
-        }
 
 
 

@@ -1,11 +1,15 @@
-using nvp.Scripts.Interfaces;
-using nvp.Scripts.Tools.Events;
+using nvp.Tools.Events;
+using nvp.Interfaces;
 using Zenject;
 
-public class Zenject_001_Oncoming_Pillars_Installer : MonoInstaller
+namespace nvp.Prototypes.Prototy_001
 {
-    public override void InstallBindings()
+
+    public class Zenject_001_Oncoming_Pillars_Installer : MonoInstaller
     {
-        Container.Bind<IEventController>().To<NvpEventController>().AsSingle();
+        public override void InstallBindings()
+        {
+            Container.Bind<nvp.Interfaces.IEventController>().To<NvpEventController>().AsSingle();
+        }
     }
 }

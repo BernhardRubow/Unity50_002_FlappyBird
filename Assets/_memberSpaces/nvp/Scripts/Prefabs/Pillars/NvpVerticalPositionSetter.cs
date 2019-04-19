@@ -1,7 +1,7 @@
-﻿using nvp.Scripts.Interfaces;
+﻿using nvp.Interfaces;
 using UnityEngine;
 
-namespace nvp.Scripts.Game
+namespace nvp.Prefabs.Pillars
 {
     public class NvpVerticalPositionSetter : IVerticalPositionSetter
     {

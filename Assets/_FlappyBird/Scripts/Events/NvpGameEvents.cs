@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace nvp.Tools.Events
+﻿namespace FlappyBird.Events
 {
     public enum NvpGameEvents
     {
@@ -13,5 +9,6 @@ namespace nvp.Tools.Events
 
 
         // +++ in game events +++
+        OnGameInitialized
     }
 }

@@ -5,7 +5,22 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/_FlappyBird/Scenes/01_Start.unity
+    guid: b7556eb6b5fdf8047b7c82d6ab99a09a
+  - enabled: 1
+    path: Assets/_FlappyBird/Scenes/02_Hauptmenu.unity
+    guid: 933eb6aa8746d0c42b4c3fd9a9b649ea
+  - enabled: 1
+    path: Assets/_FlappyBird/Scenes/03_Settings.unity
+    guid: f93b52e9db2af9046a539f0064029153
+  - enabled: 1
+    path: Assets/_FlappyBird/Scenes/04_Game.unity
+    guid: eb48fe900ed983d489b1d2afbc770139
+  - enabled: 1
+    path: Assets/_FlappyBird/Scenes/05_HighScores.unity
+    guid: 53c7fecd390a449488830d20a2f3deba
   m_configObjects: {}

@@ -1,10 +1,13 @@
-﻿using nvp.Scripts.Interfaces;
+﻿using System.Collections;
+using System.Collections.Generic;
+using FlappyBird.Interfaces;
 using UnityEngine;
 using Zenject;
 
-namespace Assets._memberSpaces.nvp.Scripts._AbstractBaseClasses
+namespace FlappyBird.Events
 {
-    public abstract class AbstractEventHandler : MonoBehaviour
+
+    public abstract class NvpAbstractEventHandler : MonoBehaviour
     {
         protected IEventController EventController;
 
@@ -14,11 +17,14 @@ namespace Assets._memberSpaces.nvp.Scripts._AbstractBaseClasses
             EventController = eventController;
         }
 
+        protected virtual void Start()
+        {
+            SubscribeToEvents();
+        }
 
         protected virtual void OnDisable()
         {
-            EventController.Reset();
-            EventController = null;
+            UnsubscribeFromEvents();
         }
 
         protected abstract void SubscribeToEvents();

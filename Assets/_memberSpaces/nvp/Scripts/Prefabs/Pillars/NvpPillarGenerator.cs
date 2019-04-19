@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using nvp.Scripts.Interfaces;
+using nvp.Interfaces;
 using nvp.Scripts.Tools.Pooling;
 using UnityEngine;
 
-namespace nvp.Scripts.Game
+namespace nvp.Prefabs.Pillars
 {
     public class NvpPillarGenerator : MonoBehaviour
     {

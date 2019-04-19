@@ -1,4 +1,4 @@
-﻿namespace nvp.Scripts.Interfaces
+﻿namespace nvp.Interfaces
 {
     public interface IVerticalPositionSetter
     {

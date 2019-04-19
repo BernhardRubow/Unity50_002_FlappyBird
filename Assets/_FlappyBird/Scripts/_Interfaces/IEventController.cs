@@ -1,8 +1,12 @@
 ﻿using System;
-using nvp.Tools.Events;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using FlappyBird.Events;
 
-namespace nvp.Interfaces
+namespace FlappyBird.Interfaces
 {
+
     public interface IEventController
     {
         void SubscribeToEvent(NvpGameEvents e, Action<object, object> callback);
@@ -10,4 +14,5 @@ namespace nvp.Interfaces
         void InvokeEvent(NvpGameEvents e, object sender, object eventArgs);
         void Reset();
     }
+
 }

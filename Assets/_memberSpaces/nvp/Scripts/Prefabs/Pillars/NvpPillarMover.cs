@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace nvp.Scripts.Game
+namespace nvp.Prefabs.Pillars
 {
     public class NvpPillarMover : MonoBehaviour
     {

@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using nvp.Interfaces;
-using nvp.Tools.Events;
+using FlappyBird.Interfaces;
+using UnityEngine;
 
-namespace nvp.Tools.Events
+namespace FlappyBird.Events
 {
-    public class NvpEventController : global::nvp.Interfaces.IEventController
+    public class NvpEventController : IEventController
     {
 
         // +++ private fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -61,4 +62,5 @@ namespace nvp.Tools.Events
             _eventCallbacks = new Dictionary<NvpGameEvents, List<Action<object, object>>>();
         }
     }
+
 }
