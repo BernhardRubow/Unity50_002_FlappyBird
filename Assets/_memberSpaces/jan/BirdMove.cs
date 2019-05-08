@@ -37,7 +37,7 @@ public class BirdMove : MonoBehaviour
         _birdRotation.z = _rb.velocity.y * _turnFactor;
         _bird_Visual.eulerAngles = _birdRotation;
 
-        Debug.Log(_rb.velocity.y * _turnFactor);
+        //Debug.Log(_rb.velocity.y * _turnFactor);
     }
     
 }

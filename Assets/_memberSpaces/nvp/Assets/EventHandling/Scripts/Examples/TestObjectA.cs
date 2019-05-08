@@ -1,16 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using FlappyBird.Events;
 using UnityEngine;
-using nvp.Assets.EventHandling;
-using UnityEngine.SceneManagement;
+using Zenject;
 
-namespace FlappyBird
+namespace nvp.Assets.EventHandling.Examples
 {
-    public class SceneManager : NvpAbstractEventHandlerV2
+    public class TestObjectA : NvpAbstractEventHandlerV2
     {
         // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
+       
 
 
 
@@ -20,17 +18,16 @@ namespace FlappyBird
 
         }
 
+        
+
 
 
 
         // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        private void OnGameInitialized(object arg1, object arg2)
+        void OnEventTriggered(object s, object e)
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(
-                "_FlappyBird/Scenes/02_Hauptmenu", 
-                LoadSceneMode.Additive);
+            Debug.LogFormat("Received: {0}", e);
         }
-
 
 
 
@@ -38,13 +35,12 @@ namespace FlappyBird
         // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         protected override void StartListenToEvents()
         {
-            EventController.StartListenForEvent((int)FlappyBirdEvents.OnGameInitialized, OnGameInitialized);
+            EventController.StartListenForEvent("test".GetHashCode(), OnEventTriggered);
         }
 
         protected override void StopListenToEvents()
         {
-            EventController.StopListenForEvent((int)FlappyBirdEvents.OnGameInitialized, OnGameInitialized);
+            EventController.StopListenForEvent("test".GetHashCode(), OnEventTriggered);
         }
-
     }
 }

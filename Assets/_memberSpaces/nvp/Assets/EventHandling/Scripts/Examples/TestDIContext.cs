@@ -1,10 +1,12 @@
-using Zenject;
-using FlappyBird.Events;
+﻿using System.Collections;
+using System.Collections.Generic;
 using nvp.Assets.EventHandling;
+using UnityEngine;
+using Zenject;
 
-namespace FlappyBird
+namespace nvp.Assets.EventHandling.Examples
 {
-    public class GlobalZenjectInstaller : MonoInstaller
+    public class TestDIContext : MonoInstaller
     {
         public override void InstallBindings()
         {
