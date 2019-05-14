@@ -14,7 +14,8 @@ public class BirdMove : MonoBehaviour
     // +++ private fields +++
     private Rigidbody2D _rb;
     public Vector3 _birdRotation = Vector3.zero;
-    
+    //public BirdMove movement;
+
 
 
 
@@ -39,5 +40,14 @@ public class BirdMove : MonoBehaviour
 
         //Debug.Log(_rb.velocity.y * _turnFactor);
     }
-    
+
+    //void OnCollisionEnter2D(Collision2D col)
+    //{
+    //    if (col.collider.tag == "Obstacle")
+    //    {
+    //        //Debug.Log("Hit Tube!");
+    //        movement.enabled = false;
+
+    //    }
+    //}
 }
