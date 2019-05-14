@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using nvp.Assets.EventHandling;
 
-public class BirdMove : MonoBehaviour
+
+public class BirdMove : NvpAbstractEventHandlerV2
 {
     // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -14,15 +16,17 @@ public class BirdMove : MonoBehaviour
     // +++ private fields +++
     private Rigidbody2D _rb;
     public Vector3 _birdRotation = Vector3.zero;
-    
+
 
 
 
 
     // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    void Start()
+    protected override void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        base.Start();
     }
 
     
@@ -39,5 +43,19 @@ public class BirdMove : MonoBehaviour
 
         //Debug.Log(_rb.velocity.y * _turnFactor);
     }
-    
+
+    protected override void StartListenToEvents()
+    {
+        EventController.StartListenForEvent("HitTube".GetHashCode(), EnabledMovement);
+    }
+
+    protected override void StopListenToEvents()
+    {
+        EventController.StopListenForEvent("HitTube".GetHashCode(), EnabledMovement);
+    }
+
+    void EnabledMovement(object s, object e)
+    {
+        this.enabled = false;
+    }
 }

@@ -16,6 +16,10 @@ public class NetworkHandler {
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+        WebProxy myProxy = new WebProxy();
+
+        myProxy.Address = new System.Uri("");
+        request.Proxy = myProxy;
 
         if (response.StatusCode != HttpStatusCode.OK)
         {
