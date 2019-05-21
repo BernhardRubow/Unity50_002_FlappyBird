@@ -15,6 +15,6 @@ public class test : NvpAbstractEventHandlerV2
     void Update()
     {
  
-        EventController.TriggerEvent("onscored".GetHashCode(), this, "Hello, World!");
+        //EventController.TriggerEvent("onscored".GetHashCode(), this, "Hello, World!");
     }
 }

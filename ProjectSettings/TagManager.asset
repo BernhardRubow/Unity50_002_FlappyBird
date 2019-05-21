@@ -7,6 +7,7 @@ TagManager:
   - asteroid
   - ship
   - Obstacle
+  - ScoreTrigger
   layers:
   - Default
   - TransparentFX

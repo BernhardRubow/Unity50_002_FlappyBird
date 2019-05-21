@@ -4,7 +4,7 @@ using UnityEngine;
 using nvp.Assets.EventHandling;
 using TMPro;
 
-public class score : NvpAbstractEventHandlerV2
+public class ScoreListener_scr : NvpAbstractEventHandlerV2
 {
 
     int Score = 0;
@@ -13,7 +13,7 @@ public class score : NvpAbstractEventHandlerV2
     // Update is called once per frame
     void Update()
     {
-        scoretext.text = Score.ToString("00");
+        scoretext.text = Score.ToString("0000");
     }
 
     void OnScored(object s, object e)
@@ -24,11 +24,15 @@ public class score : NvpAbstractEventHandlerV2
 
     protected override void StartListenToEvents()
     {
-        EventController.StartListenForEvent("onscored".GetHashCode(), OnScored);
+        EventController.StartListenForEvent(
+            EventIdNorm.Hash("fynn", "onscored"),
+            OnScored);
     }
 
     protected override void StopListenToEvents()
     {
-        EventController.StartListenForEvent("onscored".GetHashCode(), OnScored);
+        EventController.StopListenForEvent(
+            EventIdNorm.Hash("fynn", "onscored"), 
+            OnScored);
     }
 }

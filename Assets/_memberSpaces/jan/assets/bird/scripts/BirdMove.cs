@@ -16,7 +16,7 @@ public class BirdMove : NvpAbstractEventHandlerV2
     // +++ private fields +++
     private Rigidbody2D _rb;
     public Vector3 _birdRotation = Vector3.zero;
-
+    private float verticalThreshold = 11;
 
 
 
@@ -28,7 +28,6 @@ public class BirdMove : NvpAbstractEventHandlerV2
 
         base.Start();
     }
-
     
     void Update()
     {
@@ -40,22 +39,27 @@ public class BirdMove : NvpAbstractEventHandlerV2
 
         _birdRotation.z = _rb.velocity.y * _turnFactor;
         _bird_Visual.eulerAngles = _birdRotation;
-
+        Debug.LogFormat("Y: {0}", this.transform.position.y);
         //Debug.Log(_rb.velocity.y * _turnFactor);
+
+        if (Mathf.Abs(this.transform.position.y) > verticalThreshold)
+            EnabledMovement(null, null);
+        
     }
 
     protected override void StartListenToEvents()
     {
-        EventController.StartListenForEvent("HitTube".GetHashCode(), EnabledMovement);
+        EventController.StartListenForEvent(EventIdNorm.Hash("jan", "hitTube"), EnabledMovement);
     }
 
     protected override void StopListenToEvents()
     {
-        EventController.StopListenForEvent("HitTube".GetHashCode(), EnabledMovement);
+        EventController.StopListenForEvent(EventIdNorm.Hash("jan", "hitTube"), EnabledMovement);
     }
 
     void EnabledMovement(object s, object e)
     {
+        this.GetComponentInChildren<EdgeCollider2D>().enabled = false;
         this.enabled = false;
     }
 }

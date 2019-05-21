@@ -13,8 +13,20 @@ public class CollisionTube : NvpAbstractEventHandlerV2
         {
             ////Debug.Log("Hit Tube!");
             //movement.enabled = false;
-            EventController.TriggerEvent("HitTube".GetHashCode(), this, null);
+            EventController.TriggerEvent(EventIdNorm.Hash("jan", "hitTube"), this, null);
             
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if(collider.tag == "ScoreTrigger")
+        {
+            EventController.TriggerEvent(
+                EventIdNorm.Hash("fynn", "onscored"),
+                this,
+                null);
         }
     }
 }
