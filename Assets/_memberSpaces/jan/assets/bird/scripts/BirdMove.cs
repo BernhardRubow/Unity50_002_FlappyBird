@@ -32,7 +32,8 @@ public class BirdMove : NvpAbstractEventHandlerV2
     void Update()
     {
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) ||
+            Input.GetMouseButtonDown(0)) // 0 = left mouse button
         {
             _rb.velocity = Vector2.up * _velocity;
         }
