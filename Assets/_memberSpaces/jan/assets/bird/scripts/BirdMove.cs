@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using nvp.Assets.EventHandling;
-
+using UnityEngine.SceneManagement;
 
 public class BirdMove : NvpAbstractEventHandlerV2
 {
@@ -17,9 +19,10 @@ public class BirdMove : NvpAbstractEventHandlerV2
     private Rigidbody2D _rb;
     public Vector3 _birdRotation = Vector3.zero;
     private float verticalThreshold = 11;
-
-
-
+    public bool birdLiving { get; protected set; } = true;
+    private long dieTime = -1;
+    private readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+    public long timeSpendDeadOnScreenInMillis = 3000;
 
     // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     protected override void Start()
@@ -31,9 +34,45 @@ public class BirdMove : NvpAbstractEventHandlerV2
     
     void Update()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Space) ||
-            Input.GetMouseButtonDown(0)) // 0 = left mouse button
+        // do some math stuff that the tube movement gets slower and slower
+        {
+            long dieTimeOffset = unixTimeMillis() - dieTime;
+            if (birdLiving == false &&
+                !(Mathf.Abs(_bird_Visual.position.y) > verticalThreshold)
+                )
+            {
+                // to be honest, i have no real idea what this is
+                // it's just math stuff to rotate everything
+                float thresholdDistance = _bird_Visual.position.y / verticalThreshold;
+                if (thresholdDistance < 0.0f)
+                    thresholdDistance = 0.0f;
+                foreach (GameObject o in Resources.FindObjectsOfTypeAll<GameObject>().Where(obj => obj.name == "Pillar_Top_Bottom(Clone)"))
+                {
+                    float tmp = -thresholdDistance * 0.0025f;
+                    o.GetComponent<Transform>().Translate(new Vector3(tmp, 0.0f, 0.0f));
+                    tmp *= -75.0f;
+                    _turnFactor += tmp;
+                }
+
+            }
+            else if (
+              birdLiving == false &&
+              dieTimeOffset >= timeSpendDeadOnScreenInMillis // to prevent instant highscore list when touching the bottom of the screen
+              )
+            { // if the bird isn't anymore on the screen and dead
+                StopListenToEvents();
+                StartCoroutine(LoadSceneAsync("05_HighScores"));
+                // load the scene async because then it's kinda like a fade
+                // out that you see you failed a little bit longer and you
+                // get a more smooth and clean swap to the next scene
+
+            }
+        }
+
+        if (birdLiving == true && (
+            Input.GetKeyDown(KeyCode.Space) ||
+            Input.GetMouseButtonDown(0) // 0 = left mouse button
+            ))
         {
             _rb.velocity = Vector2.up * _velocity;
         }
@@ -62,7 +101,29 @@ public class BirdMove : NvpAbstractEventHandlerV2
 
     void EnabledMovement(object s, object e)
     {
-        this.GetComponentInChildren<EdgeCollider2D>().enabled = false;
-        this.enabled = false;
+        if (birdLiving == true) // to prevent the dieTime getting reset-ed and the highscore list being never showed
+        {
+            birdLiving = false;
+            dieTime = unixTimeMillis();
+            this.GetComponentInChildren<EdgeCollider2D>().enabled = false;
+            GameObject.Find("RainbowParticles").GetComponent<ParticleSystem>().Stop(); // this will stop particle spawning and old particles will fade out
+        }
     }
+
+    IEnumerator LoadSceneAsync(string scene)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
+
+        // Wait until the asynchronous scene fully loads
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+    }
+
+    public long unixTimeMillis()
+    {
+        return (long)(DateTime.UtcNow - UnixEpoch).TotalMilliseconds;
+    }
+
 }
