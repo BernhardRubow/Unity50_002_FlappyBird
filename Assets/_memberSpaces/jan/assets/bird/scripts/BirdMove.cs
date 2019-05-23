@@ -107,6 +107,7 @@ public class BirdMove : NvpAbstractEventHandlerV2
             dieTime = unixTimeMillis();
             this.GetComponentInChildren<EdgeCollider2D>().enabled = false;
             GameObject.Find("RainbowParticles").GetComponent<ParticleSystem>().Stop(); // this will stop particle spawning and old particles will fade out
+            GetComponent<RainbowFartUpdater>().enabled = false;
         }
     }
 
