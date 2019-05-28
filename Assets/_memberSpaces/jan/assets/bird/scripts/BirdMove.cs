@@ -75,11 +75,12 @@ public class BirdMove : NvpAbstractEventHandlerV2
             ))
         {
             _rb.velocity = Vector2.up * _velocity;
+            EventController.TriggerEvent(EventIdNorm.Hash("nvp","movePressed"), this, null);
         }
 
         _birdRotation.z = _rb.velocity.y * _turnFactor;
         _bird_Visual.eulerAngles = _birdRotation;
-        Debug.LogFormat("Y: {0}", this.transform.position.y);
+        //Debug.LogFormat("Y: {0}", this.transform.position.y);
         //Debug.Log(_rb.velocity.y * _turnFactor);
 
         if (Mathf.Abs(this.transform.position.y) > verticalThreshold)
