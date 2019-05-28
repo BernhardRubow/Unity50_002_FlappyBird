@@ -12,7 +12,7 @@ public class EventBasedSoundSourceScript : NvpAbstractEventHandlerV2
     public bool overlappingEnabled = false;
 
     void onSound(object s, object e) {
-        if(!source.isPlaying)
+        if(!source.isPlaying || overlappingEnabled == true)
         {
             source.PlayOneShot(sound, 1.0f);
         }
@@ -21,14 +21,16 @@ public class EventBasedSoundSourceScript : NvpAbstractEventHandlerV2
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
         source = GetComponent<AudioSource>();
         EventController.StartListenForEvent(EventIdNorm.Hash(eventPerson, eventName), onSound);
+        source.volume = PlayerPrefs.GetFloat("soundVolume");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     protected override void StartListenToEvents()
