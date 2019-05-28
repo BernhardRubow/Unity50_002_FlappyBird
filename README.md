@@ -30,7 +30,8 @@ Hier ist eine Liste aller Events mit Person, Name und einer kurzen Beschreibung 
 | Marius | showHighscores | wenn die highscore list aufgeruft wird [WIP] |
 | nvp    | movePressed    | wenn der vogel sich bewegt (nach oben)       |
    
-PlayerPref liste: (case sensitive!! die keys sind/werden mit upperCamelCase gespeichert   
+PlayerPref liste: (case sensitive!! die keys sind/werden mit upperCamelCase gespeichert)   
+
 | Key          | Typ    | Beschreibung (was ist darin gespeichert?)         |
 |--------------|--------|---------------------------------------------------|
 | name         | string | Der Username (aus den settings)                   |
@@ -38,6 +39,7 @@ PlayerPref liste: (case sensitive!! die keys sind/werden mit upperCamelCase gesp
 | musicVolume  | float  | Musik Lautstärke                                  |
 | currentCcore | int    | Die aktuelle Punktzahl vom Spieler                |
 | firstStart   | int    | Ist das der erste spiel start? (0 = ja, 1 = nein) |
+
 <a name="copyright">
 
 ### Copyright Infos
