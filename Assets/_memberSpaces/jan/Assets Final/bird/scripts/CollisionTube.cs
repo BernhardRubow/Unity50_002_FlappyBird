@@ -13,7 +13,10 @@ public class CollisionTube : NvpAbstractEventHandlerV2
         {
             ////Debug.Log("Hit Tube!");
             //movement.enabled = false;
-            EventController.TriggerEvent(EventIdNorm.Hash("jan", "hitTube"), this, null);
+            EventController.TriggerEvent
+                (EventIdNorm.Hash("jan", "hitTube"), 
+                this, 
+                transform.position);
             
         }
         
