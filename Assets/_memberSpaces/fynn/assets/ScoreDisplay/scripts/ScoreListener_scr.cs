@@ -34,5 +34,5 @@ public class ScoreListener_scr : NvpAbstractEventHandlerV2
         EventController.StopListenForEvent(
             EventIdNorm.Hash("fynn", "onscored"), 
             OnScored);
-    }
+    } 
 }
