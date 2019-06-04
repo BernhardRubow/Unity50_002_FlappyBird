@@ -23,12 +23,14 @@ Hier sind ein paar Bilder vom (hoffentlich) aktuellsten Stand des Spiels:
 #### Info: Das Event System benutzt int's als eine art ID. Hierfür verwenden wir die Funktion ``EventIdNorm.Hash(yourName, description)``
 Hier ist eine Liste aller Events mit Person, Name und einer kurzen Beschreibung wann genau dieses Event getriggered wird   
 
-| Person | Name           | Beschreibung (wann wird es getriggered?)     |
-|--------|----------------|----------------------------------------------|
-| Fynn   | onScored       | wenn der spieler einen punkt erzielt         |
-| Jan    | hitTube        | wenn der spieler stirbt                      |
-| Marius | showHighscores | wenn die highscore list aufgeruft wird [WIP] |
-| nvp    | movePressed    | wenn der vogel sich bewegt (nach oben)       |
+| Person | Name             | Beschreibung (wann wird es getriggered?)        |
+|--------|------------------|-------------------------------------------------|
+| Fynn   | onScored         | wenn der spieler einen punkt erzielt            |
+| Jan    | hitTube          | wenn der spieler stirbt                         |
+| Marius | showHighscores   | wenn die highscore list aufgeruft wird [WIP]    |
+| Fynn   | onStartButton    | wenn im hauptmenü auf start geklickt wird       |
+| Fynn   | onSettingsButton | wenn im hauptmenü auf settings geklickt wird  |
+| nvp    | movePressed      | wenn der vogel sich bewegt (nach oben)          |
    
 PlayerPref liste: (case sensitive!! die keys sind/werden mit lowerCamelCase gespeichert)   
 
