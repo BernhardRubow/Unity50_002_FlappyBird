@@ -37,7 +37,7 @@ PlayerPref liste: (case sensitive!! die keys sind/werden mit upperCamelCase gesp
 | name         | string | Der Username (aus den settings)                   |
 | soundVolume  | float  | Sound Effekt Lautstärke                           |
 | musicVolume  | float  | Musik Lautstärke                                  |
-| currentCcore | int    | Die aktuelle Punktzahl vom Spieler                |
+| currentScore | int    | Die aktuelle Punktzahl vom Spieler                |
 | firstStart   | int    | Ist das der erste spiel start? (0 = ja, 1 = nein) |
 
 <a name="copyright">
