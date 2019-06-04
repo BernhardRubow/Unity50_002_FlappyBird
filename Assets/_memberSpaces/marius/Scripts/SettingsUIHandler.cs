@@ -14,14 +14,14 @@ public class SettingsUIHandler : MonoBehaviour
     {
         if(PlayerPrefs.GetInt("firstStart") == 0)
         {
-            PlayerPrefs.SetFloat("soundVolume1", 1.0f);
-            PlayerPrefs.SetFloat("musicVolume1", 1.0f);
+            PlayerPrefs.SetFloat("soundVolume", 1.0f);
+            PlayerPrefs.SetFloat("musicVolume", 1.0f);
             PlayerPrefs.SetInt("firstStart", 1);
         }
 
         nameField.text = PlayerPrefs.GetString("name");
-        soundVolumeSlider.value = PlayerPrefs.GetFloat("soundVolume1");
-        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume1");
+        soundVolumeSlider.value = PlayerPrefs.GetFloat("soundVolume");
+        musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
         
     }
 
@@ -38,12 +38,12 @@ public class SettingsUIHandler : MonoBehaviour
 
     public void OnSoundVolumeChanged()
     {
-        PlayerPrefs.SetFloat("soundVolume1", soundVolumeSlider.value);
+        PlayerPrefs.SetFloat("soundVolume", soundVolumeSlider.value);
     }
 
     public void OnMusicVolumeChanged()
     {
-        PlayerPrefs.SetFloat("musicVolume1", musicVolumeSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
     }
 
 }
