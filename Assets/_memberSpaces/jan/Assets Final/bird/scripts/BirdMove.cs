@@ -65,7 +65,6 @@ public class BirdMove : NvpAbstractEventHandlerV2
                 // load the scene async because then it's kinda like a fade
                 // out that you see you failed a little bit longer and you
                 // get a more smooth and clean swap to the next scene
-
             }
         }
 

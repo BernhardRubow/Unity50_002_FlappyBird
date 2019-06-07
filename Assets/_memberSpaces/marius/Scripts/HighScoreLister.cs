@@ -10,38 +10,19 @@ using System.Web;
 
 public class HighScoreLister : NvpAbstractEventHandlerV2
 {
-    public TextMeshPro userScores;
-    private static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
-    public static long GetCurrentUnixTimestampMillis()
-    {
-        return (long)(DateTime.UtcNow - UnixEpoch).TotalMilliseconds;
-    }
-
-    private string numToShortString(long n)
-    {
-        if (n > 1000000000)
-            return Mathf.Floor(n / 1000000000).ToString() + "B";
-        if (n > 1000000)
-            return Mathf.Floor(n / 1000000).ToString() + "M";
-        if (n > 1000)
-            return Mathf.Floor(n / 1000).ToString() + "K";
-        else
-            return n.ToString();
-    }
-
-    private void OnShowHighscores(object s, object e) {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("highscores");
-        NetworkHandler.sendHTTPRequest("https://youtube.alpmann.de/gdp_unity50_flappy_bird1.php?action=top5");
-        while (asyncLoad.isDone == false) { }
-    }
+    public TextMeshPro userScoresUpper;
+    public TextMeshPro userScoresLeft;
+    public TextMeshPro userScoresRight;
+    private NetworkOperation highscoreLoader;
+    private NetworkOperation highscoreSetter;
 
     // Start is called before the first frame update
     protected override void Start() {
-        OnShowHighscores(null, null);
-        PlayerPrefs.SetInt("currentScore", 890234234);
-        //EventController.StartListenForEvent(EventIdNorm.Hash("marius", "showHighscores"), OnShowHighscores);
-        //EventController.TriggerEvent(EventIdNorm.Hash("marius", "showHighscores"), this, null);
+        highscoreLoader = new NetworkOperation();
+        highscoreSetter = new NetworkOperation();
+        highscoreLoader.sendHTTPRequest("https://youtube.alpmann.de/gdp_unity50_flappy_bird.php?action=top5");
+        if (PlayerPrefs.GetString("name") != "") // if a name is set
+            highscoreSetter.sendHTTPRequest("https://youtube.alpmann.de/gdp_unity50_flappy_bird.php?action=set&name=" + PlayerPrefs.GetString("name") + "&value=" + PlayerPrefs.GetInt("currentScore"));
     }
 
     protected override void StartListenToEvents()
@@ -54,26 +35,45 @@ public class HighScoreLister : NvpAbstractEventHandlerV2
         base.StopListenToEvents();
     }
 
-    // Update is called once per frame
-    void Update() {
-        string text = "Score:\t" + numToShortString(PlayerPrefs.GetInt("currentScore")) + "\n";
-        /*if (NetworkHandler.isDone() == false)
-            text += "\n\n\nloading highscore table..\n";
-        else
-            text += "wwi";*/
-        string jsonString = "{\"H4X0R\":438258000000000,\"lalala\":33259800000,\"test\":300000000,\"gunterino\":334333,\"Micky Mouse\":2000}"; //NetworkHandler.getData();
-        var dict = MiniJSON.Json.Deserialize(jsonString) as Dictionary<string, object>;
-        string[] keys = new string[5];
-        dict.Keys.CopyTo(keys, 0);
-        // to-do:
-        // - for loop for this down there
-        // - remove the static-ness from the network manager i can do ?action=set and ?action=top5 at the same time
-        text += keys[0] + "\t" + dict[keys[0]] + "\n";
-        text += keys[1] + "\t" + dict[keys[1]] + "\n";
-        text += keys[2] + "\t" + dict[keys[2]] + "\n";
-        text += keys[3] + "\t" + dict[keys[3]] + "\n";
-        text += keys[4] + "\t" + dict[keys[4]] + "\n";
+    public void OnPlayAgainButton()
+    {
+        SceneManager.LoadSceneAsync("04_Game");
+    }
 
-        userScores.SetText(text);
+    // fixedupdate instead of update to prevent lag from permanent json parsing and the other stuff
+    void FixedUpdate() {
+        string userScoresUpperText = null;
+        string userScoresLeftText = null;
+        string userScoresRightText = null;
+
+        userScoresUpperText += "Your Score:\n" + PlayerPrefs.GetInt("currentScore").ToString();
+        if(PlayerPrefs.GetString("name") == "") { // name is set to "" if not set by user
+            userScoresUpperText += "\n can't sync: name not given";
+        } else if (highscoreSetter.isDone() == true) {
+            userScoresUpperText += "\n ☺ synced\n";
+        } else {
+            userScoresUpperText += "\n X syncing..\n";
+        }
+
+        if (highscoreLoader.isDone() == false) {
+            userScoresUpperText += "\n\n\n\n\n" + "Loading Highscore table..";
+        } else {
+            string jsonString = highscoreLoader.getData();
+            var dict = MiniJSON.Json.Deserialize(jsonString) as Dictionary<string, object>;
+            string[] keys = new string[5];
+            dict.Keys.CopyTo(keys, 0);
+            // to-do:
+            // - remove the static-ness from the network manager i can do ?action=set and ?action=top5 at the same time
+
+            for (int i = 0; i < 5; i++) {
+                userScoresLeftText += keys[i] + "\n\n";
+                userScoresRightText += dict[keys[i]] + "\n\n";
+            }
+        }
+
+        userScoresUpper.SetText(userScoresUpperText);
+        userScoresLeft.SetText(userScoresLeftText);
+        userScoresRight.SetText(userScoresRightText);
+
     }
 }

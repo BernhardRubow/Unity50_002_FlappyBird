@@ -45,5 +45,4 @@ public class SettingsUIHandler : MonoBehaviour
     {
         PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
     }
-
 }

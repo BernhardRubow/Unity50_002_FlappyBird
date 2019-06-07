@@ -6,20 +6,18 @@ using TMPro;
 
 public class ScoreListener_scr : NvpAbstractEventHandlerV2
 {
-
-    int Score = 0;
     public TextMeshProUGUI scoretext; 
 
     // Update is called once per frame
     void Update()
     {
-        scoretext.text = Score.ToString("0000");
+        scoretext.text = PlayerPrefs.GetInt("currentScore").ToString().PadLeft(7, '0');
     }
 
     void OnScored(object s, object e)
     {
-        if (Score == 9999)
-        { } else { Score++; }
+        // we dont need to check the score for a overflow here because the settings manager does it automatically
+        PlayerPrefs.SetInt("currentScore", PlayerPrefs.GetInt("currentScore") + 1);
     }
 
     protected override void StartListenToEvents()

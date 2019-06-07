@@ -18,14 +18,18 @@ public class SettingsManagerScript : MonoBehaviour
         {
             PlayerPrefs.SetFloat("soundVolume", 1.0f);
             PlayerPrefs.SetFloat("musicVolume", 1.0f);
+            PlayerPrefs.SetString("name", "");
             PlayerPrefs.SetInt("firstStart", 1);
         }
 
     }
 
-    // we dont need to do this every frame
-    void Update()
+    // we only have to do this for the score system at the highscore list
+    // fixedupdate instead of update to prevent lag
+    void FixedUpdate()
     {
-        
+        // 7 digits is maximum at the highscores list
+        if (PlayerPrefs.GetInt("currentScore") > 9999999)
+            PlayerPrefs.SetInt("currentScore", 9999999);
     }
 }

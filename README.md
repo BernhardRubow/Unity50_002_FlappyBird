@@ -2,7 +2,7 @@
 ## Game Devs der Gesamtschule Salzkotten
 ##### Inhaltsverzeichnis
 [Zielsetzung](#zielsetzung)   
-[Bilder](#bilder)   
+[Gameplay](#gameplay)   
 [Für dev's](#devstuff)   
 [Copyright Infos](#copyright)   
 
@@ -11,10 +11,10 @@
 ### Zielsetzung
 Entwicklung eines voll funktionsfähigen Clones des Spieles 'Flappy Bird' durch Entwicklung von 'Wegwerf'-Prototypen zur Erlangung von Domänenwissen. Diese erworbene Wissen wird dann in der Entwicklung des fertigen Spiels umgesetzt.
 
-<a name="bilder">
+<a name="gameplay">
 
-### Bilder
-Hier sind ein paar Bilder vom (hoffentlich) aktuellsten Stand des Spiels:   
+### Gameplay
+Hier sind ein paar Bilder/Videos vom (hoffentlich) aktuellsten Stand des Spiels:   
 ![](./gameplay.gif "gameplay gif")
 
 <a name="devstuff">
@@ -27,9 +27,8 @@ Hier ist eine Liste aller Events mit Person, Name und einer kurzen Beschreibung 
 |--------|------------------|-------------------------------------------------|
 | Fynn   | onScored         | wenn der spieler einen punkt erzielt            |
 | Jan    | hitTube          | wenn der spieler stirbt                         |
-| Marius | showHighscores   | wenn die highscore list aufgeruft wird [WIP]    |
 | Fynn   | onStartButton    | wenn im hauptmenü auf start geklickt wird       |
-| Fynn   | onSettingsButton | wenn im hauptmenü auf settings geklickt wird  |
+| Fynn   | onSettingsButton | wenn im hauptmenü auf settings geklickt wird    |
 | nvp    | movePressed      | wenn der vogel sich bewegt (nach oben)          |
    
 PlayerPref liste: (case sensitive!! die keys sind/werden mit lowerCamelCase gespeichert)   
@@ -45,5 +44,6 @@ PlayerPref liste: (case sensitive!! die keys sind/werden mit lowerCamelCase gesp
 <a name="copyright">
 
 ### Copyright Infos
-Zur Zeit benuzten wir Assets von den folgenden Quellen:
+Zur Zeit benuzten wir Assets von den folgenden Quellen bzw. Personen:
 - myinstants.com
+- Calvin Rien
