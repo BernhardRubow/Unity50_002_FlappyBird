@@ -9,7 +9,7 @@ public class ButtonController : NvpAbstractEventHandlerV2
 
     void onStartButtonPressed(object s, object e)
     {
-        SceneManager.LoadSceneAsync("MainMenu");
+        SceneManager.LoadScene("04_Game", LoadSceneMode.Additive);
     }
 
     protected override void StartListenToEvents()

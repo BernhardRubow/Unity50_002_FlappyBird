@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1277225470929528429}
   - component: {fileID: 1277225470929528428}
-  - component: {fileID: 1277225470929528430}
   m_Layer: 0
   m_Name: DependencyInjectionController
   m_TagString: Untagged
@@ -46,22 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _scriptableObjectInstallers: []
   _monoInstallers:
-  - {fileID: 1277225470929528430}
+  - {fileID: 0}
   _installerPrefabs: []
   _autoRun: 1
   _parentNewObjectsUnderSceneContext: 0
   _contractNames:
   - GlobalZenjectContract
   _parentContractNames: []
---- !u!114 &1277225470929528430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1277225470929528431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f0285b1018664e42ab13550814f4240, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

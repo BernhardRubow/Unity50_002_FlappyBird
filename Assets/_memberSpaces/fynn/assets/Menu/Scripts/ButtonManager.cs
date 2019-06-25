@@ -14,13 +14,14 @@ public class ButtonManager : NvpAbstractEventHandlerV2
 
     public void onStartButtonPressed()
     {
-        EventController.TriggerEvent(EventIdNorm.Hash("fynn","onstartbutton"), this, "Hello, World");
+        EventController.TriggerEvent(EventIdNorm.Hash("Pietro","onstartbutton"), this, "Hello, World");
         starttext.text = "LOADING...";
+        this.gameObject.SetActive(false);
     }
 
         public void onSettingsButtonPressed()
     {
-        EventController.TriggerEvent(EventIdNorm.Hash("fynn","onsettingsbutton"), this, "Hello, World!");
+        EventController.TriggerEvent(EventIdNorm.Hash("Pietro","onsettingsbutton"), this, "Hello, World!");
         settingstext.text = "loading...";
     }
 
