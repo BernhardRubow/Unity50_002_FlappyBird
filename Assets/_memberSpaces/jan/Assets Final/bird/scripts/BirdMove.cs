@@ -61,7 +61,7 @@ public class BirdMove : NvpAbstractEventHandlerV2
               )
             { // if the bird isn't anymore on the screen and dead
                 StopListenToEvents();
-                StartCoroutine(LoadSceneAsync("05_HighScores"));
+                //StartCoroutine(LoadSceneAsync("05_HighScores"));
                 // load the scene async because then it's kinda like a fade
                 // out that you see you failed a little bit longer and you
                 // get a more smooth and clean swap to the next scene
