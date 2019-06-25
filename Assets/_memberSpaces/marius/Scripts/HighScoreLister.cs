@@ -40,6 +40,11 @@ public class HighScoreLister : NvpAbstractEventHandlerV2
         SceneManager.LoadSceneAsync("04_Game");
     }
 
+    public void OnToMainMenuButton()
+    {
+        SceneManager.LoadSceneAsync("02_Hauptmenu");
+    }
+
     // fixedupdate instead of update to prevent lag from permanent json parsing and the other stuff
     void FixedUpdate() {
         string userScoresUpperText = null;
@@ -62,8 +67,6 @@ public class HighScoreLister : NvpAbstractEventHandlerV2
             var dict = MiniJSON.Json.Deserialize(jsonString) as Dictionary<string, object>;
             string[] keys = new string[5];
             dict.Keys.CopyTo(keys, 0);
-            // to-do:
-            // - remove the static-ness from the network manager i can do ?action=set and ?action=top5 at the same time
 
             for (int i = 0; i < 5; i++) {
                 userScoresLeftText += keys[i] + "\n\n";

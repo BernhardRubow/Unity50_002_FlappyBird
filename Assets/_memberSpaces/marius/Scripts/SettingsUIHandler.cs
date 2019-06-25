@@ -28,7 +28,7 @@ public class SettingsUIHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        nameField.text = PlayerPrefs.GetString("name"); // do this because the name may get changed by the settingsmanager if the name contains not valid chars
     }
 
     public void OnUsernameChanged()

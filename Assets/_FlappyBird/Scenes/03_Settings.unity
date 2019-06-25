@@ -323,8 +323,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Sound Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1343,6 +1343,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869866332}
   m_CullTransparentMesh: 0
+--- !u!1001 &873163374
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 9025072275079526706, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_Name
+      value: SettingsManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.1180685
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 12.952293
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -28.447683
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5588264535152865229, guid: f34342c0444c3d54780a3d7e9e104250,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f34342c0444c3d54780a3d7e9e104250, type: 3}
 --- !u!1 &1042339015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1619,8 +1688,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Settings
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1993,8 +2062,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Music Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2189,8 +2258,8 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Username
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 818d379bd2c56c74ca41bf55ffaec7a6, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

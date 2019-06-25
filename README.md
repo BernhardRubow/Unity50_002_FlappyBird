@@ -15,7 +15,10 @@ Entwicklung eines voll funktionsfähigen Clones des Spieles 'Flappy Bird' durch 
 
 ### Gameplay
 Hier sind ein paar Bilder/Videos vom (hoffentlich) aktuellsten Stand des Spiels:   
-![](./gameplay.gif "gameplay gif")
+![](./gameplay.gif "gameplay gif")   
+   
+Der mehr oder weniger Offizieller Werbebanner:
+![](./ad.png "werbebanner")
 
 <a name="devstuff">
 
