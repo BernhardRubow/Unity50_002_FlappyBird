@@ -1,4 +1,5 @@
-﻿using FlappyBird.Events;
+﻿using System;
+using FlappyBird.Events;
 using nvp.Assets.EventHandling;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -41,6 +42,23 @@ namespace FlappyBird
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("03_Settings");
         }
 
+        private void showHighscores(object arg0, object arg1)
+        {
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("04_Game");
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("05_Highscores", LoadSceneMode.Additive);
+        }
+
+        private void onMainMenuButton(object arg0, object arg1)
+        {
+            // 04_game is already unloaded in onShowHighscores()
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("05_Highscores");
+        }
+
+        private void onPlayAgainButton(object arg0, object arg1)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("04_Game", LoadSceneMode.Additive);
+        }
+
         // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         protected override void StartListenToEvents()
         {
@@ -60,6 +78,17 @@ namespace FlappyBird
                 EventIdNorm.Hash("marius", "backToMenu"),
                 OnBackToMenuPressed);
 
+            EventController.StartListenForEvent(
+                EventIdNorm.Hash("marius", "showhighscores"),
+                showHighscores);
+
+            EventController.StartListenForEvent(
+                EventIdNorm.Hash("marius", "onplayagainbutton"),
+                onPlayAgainButton);
+
+            EventController.StartListenForEvent(
+                EventIdNorm.Hash("marius", "onmainmenubutton"),
+                onMainMenuButton);
         }
 
         protected override void StopListenToEvents()
@@ -80,6 +109,9 @@ namespace FlappyBird
                 EventIdNorm.Hash("marius", "backToMenu"),
                 OnBackToMenuPressed);
 
+            EventController.StopListenForEvent(
+                EventIdNorm.Hash("marius", "showhighscores"),
+                showHighscores);
         }
 
     }

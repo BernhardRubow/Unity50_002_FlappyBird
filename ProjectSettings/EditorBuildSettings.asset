@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/_FlappyBird/Scenes/01_Start.unity
     guid: b7556eb6b5fdf8047b7c82d6ab99a09a
@@ -20,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_FlappyBird/Scenes/04_Game.unity
     guid: eb48fe900ed983d489b1d2afbc770139
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/_FlappyBird/Scenes/05_HighScores.unity
+    guid: 328b9eef91864df46bc2e038c42b9dfa
   m_configObjects: {}

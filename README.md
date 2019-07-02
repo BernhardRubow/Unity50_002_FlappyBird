@@ -26,14 +26,17 @@ Der mehr oder weniger Offizieller Werbebanner:
 #### Info: Das Event System benutzt int's als eine art ID. Hierfür verwenden wir die Funktion ``EventIdNorm.Hash(yourName, description)``
 Hier ist eine Liste aller Events mit Person, Name und einer kurzen Beschreibung wann genau dieses Event getriggered wird   
 
-| Person | Name             | Beschreibung (wann wird es getriggered?)             |
-|--------|------------------|------------------------------------------------------|
-| Fynn   | onScored         | wenn der spieler einen punkt erzielt                 |
-| Jan    | hitTube          | wenn der spieler stirbt                              |
-| pietro | onStartButton    | wenn im hauptmenü auf start geklickt wird            |
-| pietro | onSettingsButton | wenn im hauptmenü auf settings geklickt wird         |
-| nvp    | movePressed      | wenn der vogel sich bewegt (nach oben)               |
-| marius | backtomenu       | wenn der zurück button in den settings gedrück wurde |
+| Person | Name             | Beschreibung (wann wird es getriggered?)                 |
+|--------|------------------|----------------------------------------------------------|
+| Fynn   | onScored         | wenn der spieler einen punkt erzielt                     |
+| Jan    | hitTube          | wenn der spieler stirbt                                  |
+| pietro | onStartButton    | wenn im hauptmenü auf start geklickt wird                |
+| pietro | onSettingsButton | wenn im hauptmenü auf settings geklickt wird             |
+| nvp    | movePressed      | wenn der vogel sich bewegt (nach oben)                   |
+| marius | backtomenu       | wenn der zurück button in den settings gedrück wurde     |
+| marius | showhighscores   | wenn die highscores angezeigt werden sollen              |
+| marius | onplayagainbutton| wenn der play again button (highscores) gedrückt wurde   |
+| marius | onmainmenubutton | wenn der back to menu button (highscores) gedrückt wurde |
 
 PlayerPref liste: (case sensitive!! die keys sind/werden mit lowerCamelCase gespeichert)   
 

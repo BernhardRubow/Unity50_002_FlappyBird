@@ -23,6 +23,7 @@ public class HighScoreLister : NvpAbstractEventHandlerV2
         highscoreLoader.sendHTTPRequest("https://youtube.alpmann.de/gdp_unity50_flappy_bird.php?action=top5");
         if (PlayerPrefs.GetString("name") != "") // if a name is set
             highscoreSetter.sendHTTPRequest("https://youtube.alpmann.de/gdp_unity50_flappy_bird.php?action=set&name=" + PlayerPrefs.GetString("name") + "&value=" + PlayerPrefs.GetInt("currentScore"));
+        base.Start();
     }
 
     protected override void StartListenToEvents()
@@ -37,12 +38,18 @@ public class HighScoreLister : NvpAbstractEventHandlerV2
 
     public void OnPlayAgainButton()
     {
-        SceneManager.LoadSceneAsync("04_Game");
+        EventController.TriggerEvent(
+            EventIdNorm.Hash("marius", "onplayagainbutton"), 
+            this, 
+            null);
     }
 
     public void OnToMainMenuButton()
     {
-        SceneManager.LoadSceneAsync("02_Hauptmenu");
+        EventController.TriggerEvent(
+            EventIdNorm.Hash("marius", "onmainmenubutton"),
+            this, 
+            null);
     }
 
     // fixedupdate instead of update to prevent lag from permanent json parsing and the other stuff

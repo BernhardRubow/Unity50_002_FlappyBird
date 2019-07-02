@@ -33,6 +33,13 @@ public class GameOverController : nvp.Assets.EventHandling.NvpAbstractEventHandl
             await System.Threading.Tasks.Task.Delay(50);
             text.color = new Color(1.0f, 1.0f, 1.0f, i);
         }
+        await System.Threading.Tasks.Task.Delay(750);
+
+        EventController.TriggerEvent(
+            EventIdNorm.Hash("marius", "showHighscores"),
+            this,
+            null);
+
     }
 
 
@@ -41,13 +48,17 @@ public class GameOverController : nvp.Assets.EventHandling.NvpAbstractEventHandl
     // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     protected override void StartListenToEvents()
     {
-        EventController.StartListenForEvent(EventIdNorm.Hash("Jan", "hitTube"), OnHitTube);
+        EventController.StartListenForEvent(
+            EventIdNorm.Hash("Jan", "hitTube"), 
+            OnHitTube);
     }
 
     protected override void StopListenToEvents()
     {
         //Debug.Log("now calling hitTube aka. stoplistentoevents");
-        EventController.StopListenForEvent(EventIdNorm.Hash("Jan", "hitTube"), OnHitTube);
+        EventController.StopListenForEvent(
+            EventIdNorm.Hash("Jan", "hitTube"), 
+            OnHitTube);
     }
 
     void SetTextStage(bool state)

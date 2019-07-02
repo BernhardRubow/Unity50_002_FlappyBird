@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 65172482}
   - component: {fileID: 65172486}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1283,7 +1283,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0.105, y: 0.09399891}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1193476930
+--- !u!1001 &1401972385
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1333,7 +1333,7 @@ PrefabInstance:
     - target: {fileID: 1277225470929528429, guid: 31e7fee937a37c340a63d332d3385e3b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1277225470929528429, guid: 31e7fee937a37c340a63d332d3385e3b,
         type: 3}
@@ -1348,6 +1348,36 @@ PrefabInstance:
     - target: {fileID: 1277225470929528429, guid: 31e7fee937a37c340a63d332d3385e3b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277225470929528428, guid: 31e7fee937a37c340a63d332d3385e3b,
+        type: 3}
+      propertyPath: _parentContractNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277225470929528428, guid: 31e7fee937a37c340a63d332d3385e3b,
+        type: 3}
+      propertyPath: _contractNames.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277225470929528428, guid: 31e7fee937a37c340a63d332d3385e3b,
+        type: 3}
+      propertyPath: _monoInstallers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277225470929528428, guid: 31e7fee937a37c340a63d332d3385e3b,
+        type: 3}
+      propertyPath: _parentContractNames.Array.data[0]
+      value: GlobalZenjectContract
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277225470929528428, guid: 31e7fee937a37c340a63d332d3385e3b,
+        type: 3}
+      propertyPath: _monoInstallers.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277225470929528428, guid: 31e7fee937a37c340a63d332d3385e3b,
+        type: 3}
+      propertyPath: _parentNewObjectsUnderSceneContext
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1545,7 +1575,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1723629513
 GameObject:
