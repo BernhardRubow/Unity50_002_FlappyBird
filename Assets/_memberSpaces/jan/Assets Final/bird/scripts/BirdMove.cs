@@ -82,7 +82,7 @@ public class BirdMove : NvpAbstractEventHandlerV2
         //Debug.LogFormat("Y: {0}", this.transform.position.y);
         //Debug.Log(_rb.velocity.y * _turnFactor);
 
-        if (Mathf.Abs(this.transform.position.y) > verticalThreshold)
+        if (Mathf.Abs(this.transform.position.y) > verticalThreshold && birdLiving == true)
             EventController.TriggerEvent(EventIdNorm.Hash("jan", "hitTUbe"), this, null);
             // we can't call enabledMovement(...) here directly because then the event based
             // sound source wouldn't work.
