@@ -11,7 +11,7 @@ public class CollisionTube : NvpAbstractEventHandlerV2
     {
         if (col.collider.tag == "Obstacle")
         {
-            ////Debug.Log("Hit Tube!");
+            //Debug.Log("Hit Tube!");
             //movement.enabled = false;
             EventController.TriggerEvent
                 (EventIdNorm.Hash("jan", "hitTube"), 

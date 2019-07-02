@@ -8,33 +8,64 @@ using nvp.Assets.EventHandling;
 
 public class ButtonManager : NvpAbstractEventHandlerV2
 {
-
+    // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public Text starttext;
     public Text settingstext;
 
+
+
+
+    // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+
+
+
+    // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void onStartButtonPressed()
     {
-        EventController.TriggerEvent(EventIdNorm.Hash("Pietro","onstartbutton"), this, "Hello, World");
+        EventController.TriggerEvent(
+            EventIdNorm.Hash("Pietro","onstartbutton"), 
+            this, 
+            "Hello, World");
         starttext.text = "LOADING...";
         this.gameObject.SetActive(false);
     }
 
-        public void onSettingsButtonPressed()
+    public void onSettingsButtonPressed()
     {
-        EventController.TriggerEvent(EventIdNorm.Hash("Pietro","onsettingsbutton"), this, "Hello, World!");
+        EventController.TriggerEvent(
+            EventIdNorm.Hash("Pietro","onsettingsbutton"), 
+            this, 
+            "Hello, World!");
         settingstext.text = "loading...";
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void onResetLoadingTexts(object sender, object data)
     {
-        
+        starttext.text = "START";
+        settingstext.text = "settings";
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+
+    // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    protected override void StartListenToEvents()
     {
-      
+        EventController.StartListenForEvent(
+            EventIdNorm.Hash("marius", "backToMenu"),
+            onResetLoadingTexts);
     }
-        
+
+    protected override void StopListenToEvents()
+    {
+        EventController.StopListenForEvent(
+            EventIdNorm.Hash("marius", "backToMenu"),
+            onResetLoadingTexts);
+    }
+
 }

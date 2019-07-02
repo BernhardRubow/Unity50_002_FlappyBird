@@ -21,6 +21,7 @@ public class GameOverController : nvp.Assets.EventHandling.NvpAbstractEventHandl
 
     protected override void StopListenToEvents()
     {
+        Debug.LogError("now calling hitTube aka. stoplistentoevents");
         EventController.StopListenForEvent(EventIdNorm.Hash("Jan", "hitTube"), OnHitTube);
     }
 
@@ -32,11 +33,11 @@ public class GameOverController : nvp.Assets.EventHandling.NvpAbstractEventHandl
         await System.Threading.Tasks.Task.Delay(1000);
         text.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         SetTextStage(true);
-        for (float i = 0.0f; i < 1; i += 0.1f)
-        {
-            await System.Threading.Tasks.Task.Delay(100);
-            text.color = new Color(1.0f, 1.0f, 1.0f, i);
-        }
+        //for (float i = 0.0f; i < 1; i += 0.1f)
+        //{
+           await System.Threading.Tasks.Task.Delay(100);
+           text.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        //}
     }
 
     void SetTextStage(bool state)

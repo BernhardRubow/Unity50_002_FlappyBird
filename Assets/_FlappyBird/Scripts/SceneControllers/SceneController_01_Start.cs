@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using FlappyBird.Events;
 using nvp.Assets.EventHandling;
+using UnityEngine;
 
 namespace FlappyBird.ScenesControllers
 {
@@ -9,7 +10,7 @@ namespace FlappyBird.ScenesControllers
     {
         // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
+        
 
 
         // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -22,7 +23,12 @@ namespace FlappyBird.ScenesControllers
             EventController.TriggerEvent((int)FlappyBirdEvents.OnGameInitialized, this, null);
         }
 
-
+        private void OnDisable()
+        {
+            //Debug.Log("im disabled");
+            var tmp = GameObject.Find("DependencyInjectionController");
+            Destroy(tmp);
+        }
 
 
         // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

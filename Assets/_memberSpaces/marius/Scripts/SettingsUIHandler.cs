@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using nvp.Assets.EventHandling;
 
-public class SettingsUIHandler : MonoBehaviour
+public class SettingsUIHandler : NvpAbstractEventHandlerV2
 {
     public InputField nameField;
     public Slider soundVolumeSlider;
     public Slider musicVolumeSlider;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
         if(PlayerPrefs.GetInt("firstStart") == 0)
         {
@@ -22,7 +23,9 @@ public class SettingsUIHandler : MonoBehaviour
         nameField.text = PlayerPrefs.GetString("name");
         soundVolumeSlider.value = PlayerPrefs.GetFloat("soundVolume");
         musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        
+
+        base.Start();
+
     }
 
     // Update is called once per frame
@@ -44,5 +47,13 @@ public class SettingsUIHandler : MonoBehaviour
     public void OnMusicVolumeChanged()
     {
         PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
+    }
+
+    public void BackToMenu()
+    {
+        EventController.TriggerEvent(
+            EventIdNorm.Hash("marius", "backToMenu"), 
+            this, 
+            null);
     }
 }

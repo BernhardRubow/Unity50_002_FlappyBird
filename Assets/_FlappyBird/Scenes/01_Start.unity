@@ -180,7 +180,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654086517}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &654086519
 Camera:
   m_ObjectHideFlags: 0
@@ -464,6 +464,11 @@ PrefabInstance:
     - target: {fileID: 4159174796398275909, guid: 75a84bd275210b745849dbac3bb5230b,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 839743617514697110, guid: 75a84bd275210b745849dbac3bb5230b,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
