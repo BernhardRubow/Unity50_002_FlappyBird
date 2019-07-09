@@ -48,15 +48,16 @@ namespace FlappyBird
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("05_Highscores", LoadSceneMode.Additive);
         }
 
-        private void onMainMenuButton(object arg0, object arg1)
-        {
-            // 04_game is already unloaded in onShowHighscores()
-            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("05_Highscores");
-        }
-
         private void onPlayAgainButton(object arg0, object arg1)
         {
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("05_Highscores");
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("04_Game", LoadSceneMode.Additive);
+            // we have to delete the old pillars cuz they dont get deleted automatically
+            GameObject[] oldPillarClones = GameObject.FindGameObjectsWithTag("Obstacle");
+            foreach(GameObject o in oldPillarClones)
+            {
+                GameObject.Destroy(o);
+            }
         }
 
         // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -85,10 +86,6 @@ namespace FlappyBird
             EventController.StartListenForEvent(
                 EventIdNorm.Hash("marius", "onplayagainbutton"),
                 onPlayAgainButton);
-
-            EventController.StartListenForEvent(
-                EventIdNorm.Hash("marius", "onmainmenubutton"),
-                onMainMenuButton);
         }
 
         protected override void StopListenToEvents()
@@ -112,6 +109,10 @@ namespace FlappyBird
             EventController.StopListenForEvent(
                 EventIdNorm.Hash("marius", "showhighscores"),
                 showHighscores);
+
+            EventController.StopListenForEvent(
+                EventIdNorm.Hash("marius", "onplayagainbutton"),
+                onPlayAgainButton);
         }
 
     }
