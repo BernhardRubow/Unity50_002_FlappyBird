@@ -23,18 +23,28 @@ public class BirdMove : NvpAbstractEventHandlerV2
     private long dieTime = -1;
     private readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
     public long timeSpendDeadOnScreenInMillis = 3000;
+    bool isActivated = false;
 
     // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     protected override void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
+        _rb.bodyType = RigidbodyType2D.Kinematic;
         base.Start();
     }
-    
+
     void Update()
     {
         // do some math stuff that the tube movement gets slower and slower
+
+        if (!isActivated)
+        {
+            isActivated = true;
+        
+            StartCoroutine(EnableGravityandMovement());
+            return;
+        }
+        else
         {
             long dieTimeOffset = unixTimeMillis() - dieTime;
             if (birdLiving == false &&
@@ -74,7 +84,7 @@ public class BirdMove : NvpAbstractEventHandlerV2
             ))
         {
             _rb.velocity = Vector2.up * _velocity;
-            EventController.TriggerEvent(EventIdNorm.Hash("nvp","movePressed"), this, null);
+            EventController.TriggerEvent(EventIdNorm.Hash("nvp", "movePressed"), this, null);
         }
 
         _birdRotation.z = _rb.velocity.y * _turnFactor;
@@ -84,9 +94,8 @@ public class BirdMove : NvpAbstractEventHandlerV2
 
         if (Mathf.Abs(this.transform.position.y) > verticalThreshold && birdLiving == true)
             EventController.TriggerEvent(EventIdNorm.Hash("jan", "hitTUbe"), this, null);
-            // we can't call enabledMovement(...) here directly because then the event based
-            // sound source wouldn't work.
-        
+        // we can't call enabledMovement(...) here directly because then the event based
+        // sound source wouldn't work.
     }
 
     protected override void StartListenToEvents()
@@ -97,6 +106,13 @@ public class BirdMove : NvpAbstractEventHandlerV2
     protected override void StopListenToEvents()
     {
         EventController.StopListenForEvent(EventIdNorm.Hash("jan", "hitTube"), EnabledMovement);
+    }
+
+    IEnumerator EnableGravityandMovement()
+    {
+        yield return new WaitForSeconds(1f);
+        isActivated = true;
+        _rb.bodyType = RigidbodyType2D.Dynamic;
     }
 
     void EnabledMovement(object s, object e)
