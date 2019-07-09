@@ -35,5 +35,14 @@ namespace nvp.Assets.SimplePool
 
             return null;
         }
+
+        public void DestroyQueue()
+        {
+            for(int i = 0; i < _pool.Count; i++)
+            {
+                GameObject tmp = _pool.Dequeue();
+                GameObject.Destroy(tmp);
+            }
+        }
     }
 }

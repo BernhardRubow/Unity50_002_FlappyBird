@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using FlappyBird.Events;
 using nvp.Assets.EventHandling;
 using UnityEngine;
@@ -35,6 +36,7 @@ namespace FlappyBird
         private void OnStartButtonPressed(object sender, object data)
         {
             UnityEngine.SceneManagement.SceneManager.LoadScene("04_Game", LoadSceneMode.Additive);
+            StartCoroutine(activateScene("04_Game"));
         }
 
         private void OnBackToMenuPressed(object sender, object data)
@@ -52,15 +54,26 @@ namespace FlappyBird
         {
             UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("05_Highscores");
             UnityEngine.SceneManagement.SceneManager.LoadSceneAsync("04_Game", LoadSceneMode.Additive);
-            // we have to delete the old pillars cuz they dont get deleted automatically
-            GameObject[] oldPillarClones = GameObject.FindGameObjectsWithTag("Obstacle");
-            foreach(GameObject o in oldPillarClones)
-            {
-                GameObject.Destroy(o);
-            }
+
+            StartCoroutine(activateScene("04_Game"));
         }
 
+        
+
+
         // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        private void SetActiveSceneByName(string name)
+        {
+            UnityEngine.SceneManagement.SceneManager.SetActiveScene(UnityEngine.SceneManagement.SceneManager.GetSceneByName(name));
+        }
+
+        IEnumerator activateScene(string name)
+        {
+            yield return new WaitForEndOfFrame(); // one end of the frame is not enough
+            yield return new WaitForEndOfFrame();
+            SetActiveSceneByName(name);
+        }
+
         protected override void StartListenToEvents()
         {
             EventController.StartListenForEvent(

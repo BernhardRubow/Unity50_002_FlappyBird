@@ -27,12 +27,13 @@ public class ButtonManager : NvpAbstractEventHandlerV2
     // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public void onStartButtonPressed()
     {
-        EventController.TriggerEvent(
-            EventIdNorm.Hash("Pietro","onstartbutton"), 
-            this, 
-            "Hello, World");
+        
         starttext.text = "LOADING...";
         this.gameObject.SetActive(false);
+        EventController.TriggerEvent(
+            EventIdNorm.Hash("Pietro", "onstartbutton"),
+            this,
+            "Hello, World");
     }
 
     public void onSettingsButtonPressed()
