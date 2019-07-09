@@ -5,12 +5,14 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using nvp.Assets.EventHandling;
+using System;
 
 public class ButtonManager : NvpAbstractEventHandlerV2
 {
     // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public Text starttext;
     public Text settingstext;
+    public GameObject menuCanvas;
 
 
 
@@ -51,7 +53,10 @@ public class ButtonManager : NvpAbstractEventHandlerV2
         settingstext.text = "settings";
     }
 
-
+    private void onMainMenuButton(object arg0, object arg1)
+    {
+        menuCanvas.SetActive(true);
+    }
 
 
     // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -60,6 +65,9 @@ public class ButtonManager : NvpAbstractEventHandlerV2
         EventController.StartListenForEvent(
             EventIdNorm.Hash("marius", "backToMenu"),
             onResetLoadingTexts);
+        EventController.StartListenForEvent(
+            EventIdNorm.Hash("marius", "onmainmenubutton"),
+            onMainMenuButton);
     }
 
     protected override void StopListenToEvents()
@@ -67,6 +75,9 @@ public class ButtonManager : NvpAbstractEventHandlerV2
         EventController.StopListenForEvent(
             EventIdNorm.Hash("marius", "backToMenu"),
             onResetLoadingTexts);
+        EventController.StopListenForEvent(
+            EventIdNorm.Hash("marius", "onmainmenubutton"),
+            onMainMenuButton);
     }
 
 }

@@ -58,7 +58,10 @@ namespace FlappyBird
             StartCoroutine(activateScene("04_Game"));
         }
 
-        
+        private void onMainMenuButton(object arg0, object arg1)
+        {
+            UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync("05_Highscores");
+        }
 
 
         // +++ class member +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -99,6 +102,10 @@ namespace FlappyBird
             EventController.StartListenForEvent(
                 EventIdNorm.Hash("marius", "onplayagainbutton"),
                 onPlayAgainButton);
+
+            EventController.StartListenForEvent(
+                EventIdNorm.Hash("marius", "onMainMenuButton"),
+                onMainMenuButton);
         }
 
         protected override void StopListenToEvents()
@@ -126,6 +133,10 @@ namespace FlappyBird
             EventController.StopListenForEvent(
                 EventIdNorm.Hash("marius", "onplayagainbutton"),
                 onPlayAgainButton);
+
+            EventController.StartListenForEvent(
+                EventIdNorm.Hash("marius", "onMainMenuButton"),
+                onMainMenuButton);
         }
 
     }
